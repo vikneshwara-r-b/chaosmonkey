@@ -58,4 +58,5 @@ func DumpMonkeyConfig(cfg *config.Monkey) {
 	fmt.Printf("term path: %s\n", cfg.TermPath())
 	fmt.Printf("term account: %s\n", cfg.TermAccount())
 	fmt.Printf("max apps: %d\n", cfg.MaxApps())
+	fmt.Printf("Slack WebHook URL:%s\n",cfg.GetWebHookUrl())
 }
