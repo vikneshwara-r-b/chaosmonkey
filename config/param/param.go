@@ -35,6 +35,7 @@ const (
 	ScheduleCronPath = "chaosmonkey.schedule_cron_path"
 	SchedulePath     = "chaosmonkey.schedule_path"
 	LogPath          = "chaosmonkey.log_path"
+	SlackWebHookUrl  = "chaosmonkey.slack_webhook_url"
 
 	// spinnaker
 	SpinnakerEndpoint          = "spinnaker.endpoint"

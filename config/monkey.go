@@ -59,6 +59,7 @@ func (m *Monkey) setDefaults() {
 	m.v.SetDefault(param.Trackers, []string{})
 	m.v.SetDefault(param.Decryptor, "")
 	m.v.SetDefault(param.OutageChecker, "")
+	m.v.SetDefault(param.SlackWebHookUrl, "")
 
 	m.v.SetDefault(param.DatabasePort, 3306)
 
@@ -257,6 +258,13 @@ func toStrings(values []interface{}) ([]string, error) {
 	}
 	return result, nil
 }
+
+// Slack WebHook Url from config file
+func (m *Monkey) GetWebHookUrl() string {
+	log.Println("Slack WebHook URL from config file:",m.v.GetString(param.SlackWebHookUrl))
+	return m.v.GetString(param.SlackWebHookUrl)
+}
+
 
 // StartHour (o'clock) is when Chaos
 // Monkey starts terminating this value is in [0,23] This is time-zone
