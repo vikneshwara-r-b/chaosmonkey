@@ -17,7 +17,7 @@ package spinnaker
 import (
 	"testing"
 
-	"github.com/Netflix/chaosmonkey"
+	"github.com/vikneshwara-r-b/chaosmonkey"
 )
 
 func TestFromJSON(t *testing.T) {

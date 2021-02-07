@@ -16,8 +16,8 @@ package command
 
 import (
 	"fmt"
-	"github.com/Netflix/chaosmonkey/deploy"
-	"github.com/Netflix/chaosmonkey/spinnaker"
+	"github.com/vikneshwara-r-b/chaosmonkey/deploy"
+	"github.com/vikneshwara-r-b/chaosmonkey/spinnaker"
 	"github.com/SmartThingsOSS/frigga-go"
 	"os"
 )
