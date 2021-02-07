@@ -91,7 +91,7 @@ func postToSlack(t chaosmonkey.Termination,cfg *config.Monkey) {
       Text: message_text,
       Attachments: []slack.Attachment{attachment1},
     }
-    return slack.Send(webhookUrl, "", payload)
+    slack.Send(webhookUrl, "", payload)
 }
 
 // getTracker returns a tracker by name
@@ -103,7 +103,8 @@ func getTracker(kind string, cfg *config.Monkey) (chaosmonkey.Tracker, error) {
 	// be instantiated here
 	case "notify_slack":
 		fmt.Printf("Choosing notification through slack")
-		return postToSlack(termination,cfg), errors.Errorf("Slack webhook tracker is unsupported: %s", kind)
+		postToSlack(termination,cfg)
+		return nil, errors.Errorf("Slack webhook tracker is unsupported: %s", kind)
 	default:
 		return nil, errors.Errorf("unsupported tracker: %s", kind)
 	}
