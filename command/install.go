@@ -16,8 +16,8 @@ package command
 
 import (
 	"fmt"
-	"github.com/Netflix/chaosmonkey/config"
-	"github.com/Netflix/chaosmonkey/mysql"
+	"github.com/vikneshwara-r-b/chaosmonkey/config"
+	"github.com/vikneshwara-r-b/chaosmonkey/mysql"
 	"io/ioutil"
 	"log"
 	"os"

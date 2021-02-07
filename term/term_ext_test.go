@@ -17,11 +17,11 @@ package term_test
 import (
 	"testing"
 
-	"github.com/Netflix/chaosmonkey/config"
-	"github.com/Netflix/chaosmonkey/config/param"
-	D "github.com/Netflix/chaosmonkey/deploy"
-	"github.com/Netflix/chaosmonkey/mock"
-	"github.com/Netflix/chaosmonkey/term"
+	"github.com/vikneshwara-r-b/chaosmonkey/config"
+	"github.com/vikneshwara-r-b/chaosmonkey/config/param"
+	D "github.com/vikneshwara-r-b/chaosmonkey/deploy"
+	"github.com/vikneshwara-r-b/chaosmonkey/mock"
+	"github.com/vikneshwara-r-b/chaosmonkey/term"
 )
 
 func TestEnabledAccounts(t *testing.T) {

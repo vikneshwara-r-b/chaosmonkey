@@ -18,8 +18,8 @@ import (
 	"log"
 	"time"
 
-	"github.com/Netflix/chaosmonkey/config"
-	"github.com/Netflix/chaosmonkey/schedstore"
+	"github.com/vikneshwara-r-b/chaosmonkey/config"
+	"github.com/vikneshwara-r-b/chaosmonkey/schedstore"
 )
 
 // FetchSchedule executes the "fetch-schedule" command. This checks if there

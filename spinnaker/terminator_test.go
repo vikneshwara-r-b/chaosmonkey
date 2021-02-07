@@ -18,7 +18,7 @@ import (
 	"encoding/json"
 	"testing"
 
-	"github.com/Netflix/chaosmonkey/mock"
+	"github.com/vikneshwara-r-b/chaosmonkey/mock"
 )
 
 func TestKillJSONPayload(t *testing.T) {

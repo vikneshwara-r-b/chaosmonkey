@@ -1,10 +1,10 @@
 package eligible
 
 import (
-	"github.com/Netflix/chaosmonkey"
-	D "github.com/Netflix/chaosmonkey/deploy"
-	"github.com/Netflix/chaosmonkey/grp"
-	"github.com/Netflix/chaosmonkey/mock"
+	"github.com/vikneshwara-r-b/chaosmonkey"
+	D "github.com/vikneshwara-r-b/chaosmonkey/deploy"
+	"github.com/vikneshwara-r-b/chaosmonkey/grp"
+	"github.com/vikneshwara-r-b/chaosmonkey/mock"
 	"sort"
 	"testing"
 )
