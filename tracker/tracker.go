@@ -75,7 +75,7 @@ func postToSlack(t chaosmonkey.Termination,cfg *config.Monkey) {
 	fmt.Printf("Instance ID:%s",instance_id)
 	cloud_provider := instance_data.CloudProvider()
 	fmt.Printf("Cloud Provider:%s",cloud_provider)
-	message_format = `Termination time:%s
+	message_format := `Termination time:%s
 	Leashed status:%s
 	----------- Instance details are given below: ------------
 	Application name: %s 
@@ -91,7 +91,7 @@ func postToSlack(t chaosmonkey.Termination,cfg *config.Monkey) {
       Text: message_text,
       Attachments: []slack.Attachment{attachment1},
     }
-    slack.Send(webhookUrl, "", payload)
+    return slack.Send(webhookUrl, "", payload)
 }
 
 // getTracker returns a tracker by name
@@ -103,7 +103,7 @@ func getTracker(kind string, cfg *config.Monkey) (chaosmonkey.Tracker, error) {
 	// be instantiated here
 	case "notify_slack":
 		fmt.Printf("Choosing notification through slack")
-		postToSlack(termination,cfg)
+		return postToSlack(termination,cfg), errors.Errorf("Slack webhook tracker is unsupported: %s", kind)
 	default:
 		return nil, errors.Errorf("unsupported tracker: %s", kind)
 	}
