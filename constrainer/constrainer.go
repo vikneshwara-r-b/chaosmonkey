@@ -15,9 +15,9 @@
 package constrainer
 
 import (
-	"github.com/Netflix/chaosmonkey/config"
-	"github.com/Netflix/chaosmonkey/deps"
-	"github.com/Netflix/chaosmonkey/schedule"
+	"github.com/vikneshwara-r-b/chaosmonkey/config"
+	"github.com/vikneshwara-r-b/chaosmonkey/deps"
+	"github.com/vikneshwara-r-b/chaosmonkey/schedule"
 )
 
 // NullConstrainer is a no-op constrainer

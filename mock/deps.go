@@ -18,11 +18,11 @@ import (
 	"io/ioutil"
 	"time"
 
-	"github.com/Netflix/chaosmonkey"
-	"github.com/Netflix/chaosmonkey/clock"
-	"github.com/Netflix/chaosmonkey/config"
-	"github.com/Netflix/chaosmonkey/config/param"
-	"github.com/Netflix/chaosmonkey/deps"
+	"github.com/vikneshwara-r-b/chaosmonkey"
+	"github.com/vikneshwara-r-b/chaosmonkey/clock"
+	"github.com/vikneshwara-r-b/chaosmonkey/config"
+	"github.com/vikneshwara-r-b/chaosmonkey/config/param"
+	"github.com/vikneshwara-r-b/chaosmonkey/deps"
 )
 
 type (

@@ -16,9 +16,9 @@
 package tracker
 
 import (
-	"github.com/Netflix/chaosmonkey"
+	"github.com/vikneshwara-r-b/chaosmonkey"
 	"github.com/vikneshwara-r-b/chaosmonkey/config"
-	"github.com/Netflix/chaosmonkey/deps"
+	"github.com/vikneshwara-r-b/chaosmonkey/deps"
 	"github.com/pkg/errors"
 	"github.com/vikneshwara-r-b/chaosmonkey/helpers"
 	"fmt"

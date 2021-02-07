@@ -17,9 +17,9 @@
 package env
 
 import (
-	"github.com/Netflix/chaosmonkey"
-	"github.com/Netflix/chaosmonkey/config"
-	"github.com/Netflix/chaosmonkey/deps"
+	"github.com/vikneshwara-r-b/chaosmonkey"
+	"github.com/vikneshwara-r-b/chaosmonkey/config"
+	"github.com/vikneshwara-r-b/chaosmonkey/deps"
 )
 
 // notTestEnv is an environment that does not report as a test env
