@@ -19,7 +19,6 @@ import (
 	"fmt"
 	"time"
 	"github.com/vikneshwara-r-b/chaosmonkey/config"
-	"github.com/vikneshwara-r-b/chaosmonkey/config/param"
 )
 
 const (

@@ -108,7 +108,6 @@ func getTracker(kind string, cfg *config.Monkey) (chaosmonkey.Tracker, error) {
 	// As trackers are contributed to the open source project, they should
 	// be instantiated here
 	case "notify_slack":
-		fmt.Printf("Webhook URL from getTracker:%s\n",webhookUrl)
 		fmt.Printf("Choosing notification through slack\n")
 		postToSlack(termination,cfg)
 		return nil, errors.Errorf("Slack webhook tracker is unsupported: %s", kind)
