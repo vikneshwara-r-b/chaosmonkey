@@ -31,8 +31,10 @@ func init() {
 }
 
 type (
-	Slack_test struct {
-	}
+		// Tracker implements chaosmonkey.Tracker
+		Tracker struct {
+			Error error
+		}
 )
 
 // getTrackers returns a list of trackers specified in the configuration
@@ -55,9 +57,9 @@ func getTrackers(cfg *config.Monkey) ([]chaosmonkey.Tracker, error) {
 	return result, nil
 }
 
-func (s *Slack_test) Track(t chaosmonkey.Termination, cfg *config.Monkey) error {
+func (t Tracker) Track(trm chaosmonkey.Termination, cfg *config.Monkey) error {
 	fmt.Printf("Posting to slack\n")
-	postToSlack(t, cfg)
+	postToSlack(trm, cfg)
 	return nil
 }
 
@@ -116,7 +118,7 @@ func getTracker(kind string, cfg *config.Monkey) (chaosmonkey.Tracker, error) {
 	// be instantiated here
 	case "notify_slack":
 		fmt.Printf("\nChoosing notification through slack\n")
-		slackTracker := Slack_test{}
+		slackTracker := Tracker{}
 		return slackTracker, nil
 	default:
 		return nil, errors.Errorf("unsupported tracker: %s", kind)
