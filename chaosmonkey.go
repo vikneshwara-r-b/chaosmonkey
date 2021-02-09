@@ -17,8 +17,9 @@ package chaosmonkey
 
 import (
 	"fmt"
-	"time",
+	"time"
 	"github.com/vikneshwara-r-b/chaosmonkey/config"
+	"github.com/vikneshwara-r-b/chaosmonkey/config/param"
 )
 
 const (
@@ -98,7 +99,7 @@ type (
 	// Tracker records termination events an a tracking system such as Chronos
 	Tracker interface {
 		// Track pushes a termination event to the tracking system
-		Track(t Termination,cfg config.Monkey) error
+		Track(t Termination,cfg *config.Monkey) error
 	}
 
 	// ErrorCounter counts when errors occur.
