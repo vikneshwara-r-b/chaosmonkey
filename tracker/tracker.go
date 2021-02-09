@@ -48,8 +48,13 @@ func getTrackers(cfg *config.Monkey) ([]chaosmonkey.Tracker, error) {
 	return result, nil
 }
 
+func(s interface{}) Track(t chaosmonkey.Termination,cfg *config.Monkey)
+{
+	return postToSlack(t,cfg);
+}
+
 // Posting instance termination message to Slack through webhook
-func postToSlack(t chaosmonkey.Termination,cfg *config.Monkey) {
+func postToSlack(t chaosmonkey.Termination,cfg *config.Monkey) interface{} {
 	fmt.Printf("Posting to slack")
 	webhookUrl := cfg.GetWebHookUrl()
 	fmt.Printf("Webhook URL:%s",webhookUrl)
@@ -92,17 +97,19 @@ func postToSlack(t chaosmonkey.Termination,cfg *config.Monkey) {
       Attachments: []slack.Attachment{attachment1},
     }
     slack.Send(webhookUrl, "", payload)
+	fmt.Printf("Webhook got executed");
+	return nil;
 }
 
 // getTracker returns a tracker by name
 // No trackers have been implemented yet
 func getTracker(kind string, cfg *config.Monkey) (chaosmonkey.Tracker, error) {
-	var termination chaosmonkey.Termination
 	switch kind {
 	// As trackers are contributed to the open source project, they should
 	// be instantiated here
 	case "notify_slack":
-		fmt.Printf("Choosing notification through slack")
+		fmt.Printf("Webhook URL from getTracker:%s\n",webhookUrl)
+		fmt.Printf("Choosing notification through slack\n")
 		postToSlack(termination,cfg)
 		return nil, errors.Errorf("Slack webhook tracker is unsupported: %s", kind)
 	default:

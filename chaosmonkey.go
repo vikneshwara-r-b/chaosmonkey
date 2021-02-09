@@ -97,7 +97,7 @@ type (
 	// Tracker records termination events an a tracking system such as Chronos
 	Tracker interface {
 		// Track pushes a termination event to the tracking system
-		Track(t Termination) error
+		Track(t Termination,cfg *config.Monkey) error
 	}
 
 	// ErrorCounter counts when errors occur.

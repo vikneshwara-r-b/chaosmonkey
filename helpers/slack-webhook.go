@@ -79,12 +79,13 @@ func Send(webhookUrl string, proxy string, payload Payload) interface{} {
        }
        sb := string(body)
        log.Println("Response body is given below:")
-       log.Printf(sb)
-       return sb
+       log.Println(sb)
+       return nil
     }
   } else {
     log.Fatalf("Error in parsing payload data to JSON",err)
     return err
   }
+  log.Fatalf("Error in slack webhook logic")
   return nil
 }

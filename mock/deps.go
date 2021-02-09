@@ -57,7 +57,7 @@ func (c Checker) Check(term chaosmonkey.Termination, appCfg chaosmonkey.AppConfi
 }
 
 // Track implements chaosmonkey.Tracker.Track
-func (t Tracker) Track(trm chaosmonkey.Termination) error {
+func (t Tracker) Track(trm chaosmonkey.Termination,cfg *config.Monkey) error {
 	return t.Error
 }
 

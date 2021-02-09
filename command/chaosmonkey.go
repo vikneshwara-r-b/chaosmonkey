@@ -287,6 +287,7 @@ func Execute() {
 		}
 		app := flag.Arg(1)
 		account := flag.Arg(2)
+		fmt.Printf("Getting trackers from terminate command\n")
 		trackers, err := deps.GetTrackers(cfg)
 		if err != nil {
 			log.Fatalf("FATAL: could not create trackers: %+v", err)
