@@ -109,7 +109,8 @@ func getTracker(kind string, cfg *config.Monkey) (chaosmonkey.Tracker, error) {
 	case "notify_slack":
 		fmt.Printf(cfg.GetWebHookUrl())
 		fmt.Printf("\nChoosing notification through slack\n")
-		return "slack_webhook", nil
+		var slackTracker chaosmonkey.Tracker
+		return slackTracker, nil
 	default:
 		return nil, errors.Errorf("unsupported tracker: %s", kind)
 	}
