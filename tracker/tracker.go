@@ -32,12 +32,12 @@ func init() {
 // getTrackers returns a list of trackers specified in the configuration
 func getTrackers(cfg *config.Monkey) ([]chaosmonkey.Tracker, error) {
 	var result []chaosmonkey.Tracker
- 	fmt.printf("Inside get Trackers method")
+ 	fmt.Printf("Inside get Trackers method")
 	kinds, err := cfg.Trackers()
 	if err != nil {
 		return nil, err
 	}
-    fmt.printf("Trying to move inside getTracker")
+    fmt.Printf("Trying to move inside getTracker")
 	for _, kind := range kinds {
 		tr, err := getTracker(kind, cfg)
 		if err != nil {
@@ -45,14 +45,14 @@ func getTrackers(cfg *config.Monkey) ([]chaosmonkey.Tracker, error) {
 		}
 		result = append(result, tr)
 	}
-	fmt.printf("No errors are available in getTrackers method")
+	fmt.Printf("No errors are available in getTrackers method")
 	return result, nil
 }
 
-func Track(t chaosmonkey.Termination,cfg *config.Monkey) (bool,error) {
+func Track(t chaosmonkey.Termination,cfg *config.Monkey) error {
 	fmt.Printf("Posting to slack\n")
 	 postToSlack(t,cfg)
-	 return true,nil
+	 return nil
 }
 
 // Posting instance termination message to Slack through webhook
@@ -109,7 +109,6 @@ func getTracker(kind string, cfg *config.Monkey) (chaosmonkey.Tracker, error) {
 	// As trackers are contributed to the open source project, they should
 	// be instantiated here
 	case "notify_slack":
-		fmt.Printf(cfg.GetWebHookUrl())
 		fmt.Printf("\nChoosing notification through slack\n")
 		var slackTracker chaosmonkey.Tracker
 		return slackTracker, nil
