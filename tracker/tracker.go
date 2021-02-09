@@ -16,28 +16,33 @@
 package tracker
 
 import (
+	"fmt"
+	"strconv"
+
+	"github.com/pkg/errors"
 	"github.com/vikneshwara-r-b/chaosmonkey"
 	"github.com/vikneshwara-r-b/chaosmonkey/config"
 	"github.com/vikneshwara-r-b/chaosmonkey/deps"
-	"github.com/pkg/errors"
-	"github.com/vikneshwara-r-b/chaosmonkey/helpers"
-	"fmt"
-	"strconv"
 )
 
 func init() {
 	deps.GetTrackers = getTrackers
 }
 
+type (
+	Slack_test struct {
+	}
+)
+
 // getTrackers returns a list of trackers specified in the configuration
 func getTrackers(cfg *config.Monkey) ([]chaosmonkey.Tracker, error) {
 	var result []chaosmonkey.Tracker
- 	fmt.Printf("Inside get Trackers method")
+	fmt.Printf("Inside get Trackers method")
 	kinds, err := cfg.Trackers()
 	if err != nil {
 		return nil, err
 	}
-    fmt.Printf("Trying to move inside getTracker")
+	fmt.Printf("Trying to move inside getTracker")
 	for _, kind := range kinds {
 		tr, err := getTracker(kind, cfg)
 		if err != nil {
@@ -49,38 +54,38 @@ func getTrackers(cfg *config.Monkey) ([]chaosmonkey.Tracker, error) {
 	return result, nil
 }
 
-func Track(t chaosmonkey.Termination,cfg *config.Monkey) error {
+func (s *Slack_test) Track(t chaosmonkey.Termination, cfg *config.Monkey) error {
 	fmt.Printf("Posting to slack\n")
-	 postToSlack(t,cfg)
-	 return nil
+	postToSlack(t, cfg)
+	return nil
 }
 
 // Posting instance termination message to Slack through webhook
-func postToSlack(t chaosmonkey.Termination,cfg *config.Monkey) (interface{}) {
+func postToSlack(t chaosmonkey.Termination, cfg *config.Monkey) interface{} {
 	webhookUrl := cfg.GetWebHookUrl()
-	fmt.Printf("Webhook URL:%s\n",webhookUrl)
-	attachment1 := slack.Attachment {}
+	fmt.Printf("Webhook URL:%s\n", webhookUrl)
+	attachment1 := slack.Attachment{}
 	termination_time := t.Time.String()
-	fmt.Printf("Termination time:%s\n",termination_time)
+	fmt.Printf("Termination time:%s\n", termination_time)
 	leashed := strconv.FormatBool(t.Leashed)
-	fmt.Printf("Leashed status:%s\n",leashed)
+	fmt.Printf("Leashed status:%s\n", leashed)
 	instance_data := t.Instance
 	app_name := instance_data.AppName()
-	fmt.Printf("Application name:%s\n",app_name)
+	fmt.Printf("Application name:%s\n", app_name)
 	account_name := instance_data.AccountName()
-	fmt.Printf("Account name:%s\n",account_name)
+	fmt.Printf("Account name:%s\n", account_name)
 	region_name := instance_data.RegionName()
-	fmt.Printf("Region name:%s\n",region_name)
+	fmt.Printf("Region name:%s\n", region_name)
 	stack_name := instance_data.StackName()
-	fmt.Printf("Stack name:%s\n",stack_name)
+	fmt.Printf("Stack name:%s\n", stack_name)
 	cluster_name := instance_data.ClusterName()
-	fmt.Printf("Cluster name:%s\n",cluster_name)
+	fmt.Printf("Cluster name:%s\n", cluster_name)
 	asg_name := instance_data.ASGName()
-	fmt.Printf("ASG name:%s\n",asg_name)
-	instance_id :=  instance_data.ID()
-	fmt.Printf("Instance ID:%s\n",instance_id)
+	fmt.Printf("ASG name:%s\n", asg_name)
+	instance_id := instance_data.ID()
+	fmt.Printf("Instance ID:%s\n", instance_id)
 	cloud_provider := instance_data.CloudProvider()
-	fmt.Printf("Cloud Provider:%s\n",cloud_provider)
+	fmt.Printf("Cloud Provider:%s\n", cloud_provider)
 	message_format := `Termination time:%s
 	Leashed status:%s
 	----------- Instance details are given below: ------------
@@ -92,14 +97,14 @@ func postToSlack(t chaosmonkey.Termination,cfg *config.Monkey) (interface{}) {
 	Auto Scaling Group name: %s  
 	Instance-ID: %s
 	Cloud Provider:%s`
-    message_text := fmt.Sprintf(message_format,termination_time,leashed,app_name,account_name,region_name,stack_name,cluster_name,asg_name,instance_id,cloud_provider)
-    payload := slack.Payload {
-      Text: message_text,
-      Attachments: []slack.Attachment{attachment1},
-    }
-    slack.Send(webhookUrl, "", payload)
-	fmt.Printf("Webhook got executed\n");
-	return nil;
+	message_text := fmt.Sprintf(message_format, termination_time, leashed, app_name, account_name, region_name, stack_name, cluster_name, asg_name, instance_id, cloud_provider)
+	payload := slack.Payload{
+		Text:        message_text,
+		Attachments: []slack.Attachment{attachment1},
+	}
+	slack.Send(webhookUrl, "", payload)
+	fmt.Printf("Webhook got executed\n")
+	return nil
 }
 
 // getTracker returns a tracker by name
@@ -110,7 +115,7 @@ func getTracker(kind string, cfg *config.Monkey) (chaosmonkey.Tracker, error) {
 	// be instantiated here
 	case "notify_slack":
 		fmt.Printf("\nChoosing notification through slack\n")
-		var slackTracker chaosmonkey.Tracker
+		var slackTracker Slack_test
 		return slackTracker, nil
 	default:
 		return nil, errors.Errorf("unsupported tracker: %s", kind)
