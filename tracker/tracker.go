@@ -32,12 +32,12 @@ func init() {
 // getTrackers returns a list of trackers specified in the configuration
 func getTrackers(cfg *config.Monkey) ([]chaosmonkey.Tracker, error) {
 	var result []chaosmonkey.Tracker
-
+ 	fmt.printf("Inside get Trackers method")
 	kinds, err := cfg.Trackers()
 	if err != nil {
 		return nil, err
 	}
-
+    fmt.printf("Trying to move inside getTracker")
 	for _, kind := range kinds {
 		tr, err := getTracker(kind, cfg)
 		if err != nil {
@@ -45,12 +45,14 @@ func getTrackers(cfg *config.Monkey) ([]chaosmonkey.Tracker, error) {
 		}
 		result = append(result, tr)
 	}
+	fmt.printf("No errors are available in getTrackers method")
 	return result, nil
 }
 
-func Track(t chaosmonkey.Termination,cfg *config.Monkey) (interface{}) {
+func Track(t chaosmonkey.Termination,cfg *config.Monkey) (bool,error) {
 	fmt.Printf("Posting to slack\n")
-	 return postToSlack(t,cfg);
+	 postToSlack(t,cfg)
+	 return true,nil
 }
 
 // Posting instance termination message to Slack through webhook
