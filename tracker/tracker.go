@@ -48,8 +48,7 @@ func getTrackers(cfg *config.Monkey) ([]chaosmonkey.Tracker, error) {
 	return result, nil
 }
 
-func Track(t chaosmonkey.Termination,cfg *config.Monkey) (interface{}) 
-{
+func Track(t chaosmonkey.Termination,cfg *config.Monkey) (interface{}) {
 	return postToSlack(t,cfg);
 }
 
