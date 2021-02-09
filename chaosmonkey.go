@@ -17,7 +17,8 @@ package chaosmonkey
 
 import (
 	"fmt"
-	"time"
+	"time",
+	"github.com/vikneshwara-r-b/chaosmonkey/config"
 )
 
 const (
