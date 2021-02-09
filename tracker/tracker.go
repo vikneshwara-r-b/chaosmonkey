@@ -23,6 +23,7 @@ import (
 	"github.com/vikneshwara-r-b/chaosmonkey"
 	"github.com/vikneshwara-r-b/chaosmonkey/config"
 	"github.com/vikneshwara-r-b/chaosmonkey/deps"
+	"github.com/vikneshwara-r-b/chaosmonkey/helpers"
 )
 
 func init() {
@@ -115,7 +116,7 @@ func getTracker(kind string, cfg *config.Monkey) (chaosmonkey.Tracker, error) {
 	// be instantiated here
 	case "notify_slack":
 		fmt.Printf("\nChoosing notification through slack\n")
-		var slackTracker Slack_test
+		slackTracker := Slack_test{}
 		return slackTracker, nil
 	default:
 		return nil, errors.Errorf("unsupported tracker: %s", kind)
