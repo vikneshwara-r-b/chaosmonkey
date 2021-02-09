@@ -49,12 +49,12 @@ func getTrackers(cfg *config.Monkey) ([]chaosmonkey.Tracker, error) {
 }
 
 func Track(t chaosmonkey.Termination,cfg *config.Monkey) (interface{}) {
-	return postToSlack(t,cfg);
+	fmt.Printf("Posting to slack\n")
+	 return postToSlack(t,cfg);
 }
 
 // Posting instance termination message to Slack through webhook
 func postToSlack(t chaosmonkey.Termination,cfg *config.Monkey) (interface{}) {
-	fmt.Printf("Posting to slack\n")
 	webhookUrl := cfg.GetWebHookUrl()
 	fmt.Printf("Webhook URL:%s\n",webhookUrl)
 	attachment1 := slack.Attachment {}

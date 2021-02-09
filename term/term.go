@@ -161,13 +161,16 @@ func doTerminate(d deps.Deps, group grp.InstanceGroup) error {
 
 	//
 	// Record the termination with configured trackers
-	//
+	
+	log.Println("Before Tracker iteration")
 	for _, tracker := range d.Trackers {
-		err = tracker.Track(trm,*d.MonkeyCfg)
+		log.Println("In tracker iteration:",d.MonkeyCfg.GetWebHookUrl())
+		err = tracker.Track(trm,d.MonkeyCfg)
 		if err != nil {
 			return errors.Wrap(err, "not terminating: recording termination event failed")
 		}
 	}
+	log.Println("After tracker iterator")
 
 	//
 	// Actual instance termination happens here
