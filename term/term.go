@@ -163,7 +163,7 @@ func doTerminate(d deps.Deps, group grp.InstanceGroup) error {
 	// Record the termination with configured trackers
 	//
 	for _, tracker := range d.Trackers {
-		err = tracker.Track(trm,d.MonkeyCfg)
+		err = tracker.Track(trm,*d.MonkeyCfg)
 		if err != nil {
 			return errors.Wrap(err, "not terminating: recording termination event failed")
 		}
